@@ -4,11 +4,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    if params[:search] 
-      @companies = Company.where('name like ?', "%#{params[:search]}%")
-    else
-      @companies = Company.all
-    end
+    @companies = Company.search(params[:search])
   end
 
   # GET /companies/1
